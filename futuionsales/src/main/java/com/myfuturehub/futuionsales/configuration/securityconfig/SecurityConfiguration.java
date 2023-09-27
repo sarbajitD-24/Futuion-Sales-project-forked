@@ -2,6 +2,7 @@ package com.myfuturehub.futuionsales.configuration.securityconfig;
 
 
 //import com.myfuturehub.futuionsales.configuration.jwtconfig.JwtAuthFilter;
+import com.myfuturehub.futuionsales.configuration.jwtconfig.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +25,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-//    @Autowired
-//    private JwtAuthFilter jwtAuthFilter;
+    @Autowired
+    private JwtAuthFilter jwtAuthFilter;
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailServiceImpl();
@@ -39,7 +40,7 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

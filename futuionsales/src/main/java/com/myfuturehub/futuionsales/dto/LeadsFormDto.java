@@ -1,22 +1,17 @@
-package com.myfuturehub.futuionsales.entity;
+package com.myfuturehub.futuionsales.dto;
 
+import com.myfuturehub.futuionsales.entity.User;
 import com.myfuturehub.futuionsales.enums.LeadStatus;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LeadsForm extends MasterEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class LeadsFormDto {
     private String name;
     private String contact;
     private String email;
@@ -31,7 +26,7 @@ public class LeadsForm extends MasterEntity {
     private LeadStatus status;
     private String currentDomain;
     private Date enquiryDate;
-    private String followUpBy;
+    private User followUpBy;
     private Date followUpDate;
     private String enquirySource;
     private String location;
